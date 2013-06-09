@@ -1,0 +1,14 @@
+Phase: wwizt
+Input: Lookup
+Options: control = brill
+
+Rule: language_notTagged
+Priority: 20
+(
+	({Lookup.majorType == "programming_languages"})
+
+):language
+
+-->
+:language.Language = {rule = "language_notTagged"}
+ 
