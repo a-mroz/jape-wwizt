@@ -1,0 +1,24 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: post_date_notTagged
+Priority: 20
+((
+	{Token.string == "Date"}
+   	{Token.string == ":"}
+) | (
+	{Token.string == "Date"}
+	{Token.string == ":"}
+	{Token.kind == "word"}
+	{Token.string == ","}
+))
+(
+	({Token.kind == "number"})
+	({Token.kind == "word"})
+	({Token.kind == "number"})
+):post_date
+
+-->
+:post_date.Post_date = {rule = "post_date_notTagged"}
+ 
