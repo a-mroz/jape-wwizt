@@ -1,0 +1,15 @@
+Phase: wwizt
+Input: Lookup Location
+Options: control = brill
+
+Rule: city_notTagged
+Priority: 20
+
+(
+	({Location.locType == "city"})
+
+):city
+
+-->
+:city.City = {rule = "city_notTagged"}
+ 

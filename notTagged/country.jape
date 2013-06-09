@@ -4,15 +4,10 @@ Options: control = brill
 
 Rule: country_notTagged
 Priority: 20
-((
-	({Lookup.majorType == "location"})
-	({Lookup.minorType == "country"})
-) | 
-
 (
 	({Location.locType == "country"})
 
-)):country
+):country
 
 -->
 :country.Country = {rule = "country_notTagged"}
