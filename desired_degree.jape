@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: desired_degrees
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "desired_degree"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "desired_degree"})*
+):desired_degree
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "desired_degree"}
+   {Token.string == ">"}
+):close
+-->
+:desired_degree.Desired_degree = {rule = "desired_degrees"}

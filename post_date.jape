@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: post_dates
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "post_date"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "post_date"})*
+):post_date
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "post_date"}
+   {Token.string == ">"}
+):close
+-->
+:post_date.Post_date = {rule = "post_dates"}

@@ -1,0 +1,22 @@
+Phase: ida
+Input: Token
+Options: control = brill
+
+Rule: titles
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "title"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "title"})*
+):title
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "title"}
+   {Token.string == ">"}
+):close
+-->
+:title.Title = {rule = "titles"}

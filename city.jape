@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: cities
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "city"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string!="city"})*
+):city
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "city"}
+   {Token.string == ">"}
+):close
+-->
+:city.City = {rule = "cities"}

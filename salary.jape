@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: salary
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "salary"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "salary"})*
+):salary
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "salary"}
+   {Token.string == ">"}
+):close
+-->
+:salary.Salary = {rule = "salary"}

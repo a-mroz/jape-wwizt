@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: company
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "company"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "company"})*
+):company
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "company"}
+   {Token.string == ">"}
+):close
+-->
+:company.Company = {rule = "company"}

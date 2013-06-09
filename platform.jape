@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: platforms
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "platform"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "platform"})*
+):platform
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "platform"}
+   {Token.string == ">"}
+):close
+-->
+:platform.Platform = {rule = "platforms"}

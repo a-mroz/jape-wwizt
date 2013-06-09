@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: areas
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "area"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string!="area"})*
+):area
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "area"}
+   {Token.string == ">"}
+):close
+-->
+:area.Area = {rule = "areas"}

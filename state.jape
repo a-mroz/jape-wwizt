@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: states
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "state"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "state"})*
+):state
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "state"}
+   {Token.string == ">"}
+):close
+-->
+:state.State = {rule = "states"}

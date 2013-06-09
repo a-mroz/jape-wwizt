@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: recruiters
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "recruiter"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != recruiter})*
+):recruiter
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "recruiter"}
+   {Token.string == ">"}
+):close
+-->
+:recruiter.Recruiter = {rule = "recruiters"}

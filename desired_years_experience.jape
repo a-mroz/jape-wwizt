@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: desired_years_experiences
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "desired_years_experience"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "desired_years_experience"})*
+):desired_years_experience
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "desired_years_experience"}
+   {Token.string == ">"}
+):close
+-->
+:desired_years_experience.Desired_years_experience = {rule = "desired_years_experiences"}

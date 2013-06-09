@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: applications
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "application"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "application"})*
+):application
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "application"}
+   {Token.string == ">"}
+):close
+-->
+:application.Application = {rule = "applications"}

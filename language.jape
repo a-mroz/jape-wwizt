@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: languages
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "language"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "language"})*
+):language
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "language"}
+   {Token.string == ">"}
+):close
+-->
+:language.Language = {rule = "languages"}

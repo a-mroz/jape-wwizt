@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill 
+
+Rule: ids
+Priority: 20
+(
+   {Token.string == "<"}
+   {Token.string == "id"}
+   {Token.string == ">"}
+):open
+(
+   ({Token.string != "id"})*
+):id
+(
+   {Token.string == "<"}
+   {Token.string == "/"}
+   {Token.string == "id"}
+   {Token.string == ">"}
+):close
+-->
+:id.Id = {rule = "ids"}
