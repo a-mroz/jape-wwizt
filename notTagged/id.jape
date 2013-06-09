@@ -1,0 +1,22 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: ids_notTagged
+Priority: 20
+(
+	{Token.string == "Message-"}
+   	{Token.string == "ID"}
+   	{Token.string == ":"}
+   	{Token.string == "<"}
+):open
+(
+	({Token.string!= ">"})*
+):id
+(
+	{Token.string == ">"}
+):close
+
+-->
+:id.Id = {rule = "ids_notTagged"}
+ 
