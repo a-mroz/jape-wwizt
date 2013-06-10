@@ -1,0 +1,20 @@
+Phase: wwizt
+Input: Token 
+Options: control = brill 
+
+Rule: city2_notTagged 
+Priority: 20 
+
+( 
+	{Token.string == "Summary"}   
+	{Token.string == ":"} 
+):open 
+( 
+	({Token.string!= ","})* 
+):city 
+( 
+	{Token.string == ","} 
+):close 
+
+--> 
+:city.City = {rule = "city2_notTagged"}

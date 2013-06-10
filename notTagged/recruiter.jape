@@ -1,0 +1,20 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: recruiter_notTagged
+Priority: 20
+(
+	{Token.string == "From"}
+   	{Token.string == ":"}
+   	{Token.string == "\""}
+):open
+(
+	({Token.string!= "\""})*
+):recruiter
+(
+	{Token.string == "\""}
+):close
+
+-->
+:recruiter.Recruiter = {rule = "recruiter_notTagged"}

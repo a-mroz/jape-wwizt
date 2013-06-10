@@ -1,0 +1,18 @@
+Phase: wwizt
+Input: Token Person
+Options: control = brill
+
+Rule: recruiter2_notTagged
+Priority: 20
+(
+	{Token.string == "("}
+):open
+(
+	({Person.gender == "male"} | {Person.gender == "female"})*
+):recruiter
+(
+	{Token.string == ")"}
+):close
+
+-->
+:recruiter.Recruiter = {rule = "recruiter2_notTagged"}

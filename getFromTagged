@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TAG="$1"
+
+for file in *
+do
+	grep -o "<$TAG\>.*</$TAG\>" $file | sed "s/\(<$TAG>\|<\/$TAG\>\)//g"  > $TAG.lst
+	#cat $file | tr "\n" "|" | grep -o '<language>.*</language>' | sed 's/\(<language>\|<\/language>\)//g' | sed 's/|/\n/g' > tmp
+done

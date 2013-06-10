@@ -1,0 +1,11 @@
+Phase: wwizt
+Input: Money
+Options: control = brill
+
+Rule: salary2_notTagged
+(
+	{Money.kind == "number"}
+):salary
+
+-->
+:salary.Salary = {rule = "salary2_notTagged"}

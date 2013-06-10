@@ -1,0 +1,11 @@
+Phase: wwizt
+Input: Token
+Options: control = brill
+
+Rule: salary_notTagged
+(
+	({Token.string =~ "\$[0-9]"})*
+):salary
+
+-->
+:salary.Salary = {rule = "salary_notTagged"}
